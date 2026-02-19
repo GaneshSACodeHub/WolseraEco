@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
-import { adminLogin } from "./Services/authService";
+import { adminLogin } from "../Services/authService";
 
 function AdminSignin() {
   const navigate = useNavigate();

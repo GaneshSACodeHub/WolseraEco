@@ -1,7 +1,8 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import AdminSignin from "./AdminSignin";
-import Signup from "./Signup";
-import Signin from "./Signin";
+import AdminSignin from "./pages/AdminSignin";
+import Home from "./pages/Home";
+import Signup from "./pages/Signup";
+import Signin from "./pages/Signin";
 import "./App.css";
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
 
       {/* Admin Signin page */}
       <Route path="/admin" element={<AdminSignin />} />
+
+      {/* Home Page */}
+      <Route path="/home" element={<Home />} />
 
     </Routes>
   );

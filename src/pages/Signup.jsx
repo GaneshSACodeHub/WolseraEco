@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
-import { signupUser } from "./Services/authService";
+import { signupUser } from "../Services/authService";
 
 function Signup() {
   const navigate = useNavigate();
