@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import AdminSignin from "./pages/AdminSignin";
+import ProductDetails from "./pages/ProductDetails";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
@@ -22,6 +23,9 @@ function App() {
 
       {/* Home Page */}
       <Route path="/home" element={<Home />} />
+
+      {/* Product Details Page */}
+      <Route path="/product/:id" element={<ProductDetails />} />
 
     </Routes>
   );

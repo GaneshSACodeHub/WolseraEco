@@ -1,11 +1,23 @@
 import React from "react";
 
 function ProductCard({ product, onAddToCart }) {
+
+  const handleCardClick = () => {
+    window.open(`/product/${product.id}`, "_blank");
+  };
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation(); // prevents opening new tab
+    onAddToCart(product);
+  };
+
   return (
     <div
+      onClick={handleCardClick}
       className="bg-white rounded-xl shadow-md overflow-hidden 
                  flex flex-col justify-between 
                  h-[460px] 
+                 cursor-pointer
                  transition duration-300 
                  hover:-translate-y-2 hover:shadow-xl"
     >
@@ -43,14 +55,13 @@ function ProductCard({ product, onAddToCart }) {
           </span>
         </div>
 
-        {/* Spacer pushes button down */}
         <div className="flex-grow"></div>
 
         {/* Add to Cart */}
         <button
-          onClick={() => onAddToCart(product)}
+          onClick={handleAddToCart}
           className="w-full bg-zinc-900 text-white py-2.5 rounded-lg 
-                     hover:bg-zinc-800 transition duration-300 cursor-pointer"
+                     hover:bg-zinc-800 transition duration-300"
         >
           Add to Cart
         </button>
