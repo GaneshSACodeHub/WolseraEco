@@ -7,7 +7,7 @@ function ProductCard({ product, onAddToCart }) {
   };
 
   const handleAddToCart = (e) => {
-    e.stopPropagation(); // prevents opening new tab
+    e.stopPropagation();
     onAddToCart(product);
   };
 
@@ -35,13 +35,16 @@ function ProductCard({ product, onAddToCart }) {
       {/* Content Section */}
       <div className="p-4 flex flex-col flex-grow">
 
-        {/* Category */}
-        <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
-          {product.category}
-        </p>
+        {/* Category / Gender Tag */}
+        {product.category && (
+          <span className="inline-block text-[10px] uppercase tracking-wider 
+                           bg-zinc-100 text-zinc-800 px-2 py-1 rounded-full mb-2 w-fit">
+            {product.category}
+          </span>
+        )}
 
         {/* Name */}
-        <h3 className="text-base font-semibold text-zinc-900 mb-2">
+        <h3 className="text-base font-semibold text-zinc-900 mb-2 line-clamp-2">
           {product.name}
         </h3>
 
@@ -50,9 +53,12 @@ function ProductCard({ product, onAddToCart }) {
           <span className="text-lg font-bold text-zinc-900">
             ₹{product.price}
           </span>
-          <span className="text-sm text-gray-500 line-through">
-            ₹{product.originalPrice}
-          </span>
+
+          {product.originalPrice && (
+            <span className="text-sm text-gray-500 line-through">
+              ₹{product.originalPrice}
+            </span>
+          )}
         </div>
 
         <div className="flex-grow"></div>

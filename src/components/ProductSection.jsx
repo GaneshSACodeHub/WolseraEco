@@ -101,6 +101,20 @@ function ProductSection() {
         ))}
 
       </div>
+
+      {/* Pagination (Backend Ready UI) */}
+      <div className="flex justify-center mt-16 gap-3">
+        <button className="px-4 py-2 bg-zinc-800 text-white rounded-lg">
+          1
+        </button>
+        <button className="px-4 py-2 bg-zinc-700 text-white rounded-lg hover:bg-zinc-600 transition">
+          2
+        </button>
+        <button className="px-4 py-2 bg-zinc-700 text-white rounded-lg hover:bg-zinc-600 transition">
+          3
+        </button>
+      </div>
+
     </section>
   );
 }
