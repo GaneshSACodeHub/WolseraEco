@@ -67,6 +67,7 @@ function ProductDetails() {
     else navigate("/payment");
   };
 
+  console.log(product);
   return (
 
     <div className="min-h-screen flex flex-col bg-zinc-950 text-white">

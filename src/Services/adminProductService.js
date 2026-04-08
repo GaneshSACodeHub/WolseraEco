@@ -39,6 +39,10 @@ export const deleteVariant = (variantId) =>
 export const addImage = (productId, data) =>
   axiosInstance.post(`${API_URL}/${productId}/images`, data);
 
+export const updateImage = async (imageId) =>{
+  return await axiosInstance.patch(`${API_URL}/images/${imageId}/set-primary`); 
+}
+
 export const deleteImage = (imageId) =>
   axiosInstance.delete(`${API_URL}/images/${imageId}`);
 

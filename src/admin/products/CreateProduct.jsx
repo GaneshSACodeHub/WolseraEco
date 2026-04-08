@@ -23,7 +23,6 @@ function CreateProduct() {
       try {
         const data = await fetchCategoryTree();
         setCategories(data);
-        console.log(data);
         
       } catch (err) {
         console.error("Failed to load categories", err);

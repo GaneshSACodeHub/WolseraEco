@@ -62,7 +62,7 @@ export const CartProvider = ({ children }) => {
   };
 
   // Remove Item
-  const removeFromCart = async (cartItemId) => {
+  const removeItem = async (cartItemId) => {
     try {
       setLoading(true);
       const { data } = await removeCartItem(cartItemId);
@@ -116,7 +116,7 @@ export const CartProvider = ({ children }) => {
         loadCart,
         addToCart,
         updateQuantity,
-        removeFromCart,
+        removeItem,
         clearCart,
         checkout,
     }}

@@ -7,6 +7,7 @@ import {
   addVariant,
   deleteVariant,
   addImage,
+  updateImage,
   deleteImage
 } from "../../Services/adminProductService";
 
@@ -67,7 +68,6 @@ const fetchProduct = async () => {
 
   const [newImage, setNewImage] = useState({
     imageUrl: "",
-    displayOrder: "",
     primary: false
   });
 
@@ -169,7 +169,6 @@ const fetchProduct = async () => {
 
     const res = await addImage(id, {
       imageUrl: newImage.imageUrl,
-      displayOrder: newImage.displayOrder,
       primary: newImage.primary
     });
 
@@ -177,7 +176,6 @@ const fetchProduct = async () => {
 
     setNewImage({
       imageUrl: "",
-      displayOrder: "",
       primary: false
     });
 
@@ -201,13 +199,17 @@ const fetchProduct = async () => {
   }
   };
 
-  const handleSetPrimary = (id) => {
+  const handleSetPrimary = async (id) => {
     const updated = images.map(img => ({
       ...img,
       primary: img.id === id
     }));
+
+    await updateImage(id);
     setImages(updated);
+
   };
+  
 
 return (
   <AdminLayout>
@@ -410,14 +412,7 @@ return (
                 className="border border-zinc-300 p-3 rounded-lg"
               />
 
-              <input
-                type="number"
-                name="displayOrder"
-                placeholder="Display Order"
-                value={newImage.displayOrder}
-                onChange={handleImageChange}
-                className="border border-zinc-300 p-3 rounded-lg"
-              />
+              
 
               <label className="flex items-center gap-2">
                 <input

@@ -36,6 +36,7 @@ function ProductSection({ searchTerm }) {
     console.log("Add to cart clicked", product);
   };
 
+  console.log(products);
   return (
     <section className="bg-zinc-950 py-20 px-4 md:px-8">
 
