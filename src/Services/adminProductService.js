@@ -23,6 +23,10 @@ export const activateProduct = (id) =>
 export const deactivateProduct = (id) =>
   axiosInstance.patch(`${API_URL}/${id}/deactivate`);
 
+export const deleteProduct = async (id) => {
+  return axiosInstance.delete(`/admin/products/${id}`);
+};
+
 // ================= VARIANTS =================
 
 export const addVariant = (productId, data) =>

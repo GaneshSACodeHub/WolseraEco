@@ -15,6 +15,7 @@ function CreateProduct() {
     gender: "",
     colour: "",
     active: true,
+    newArrival: false,
     categories: []
   });
 
@@ -233,6 +234,23 @@ function CreateProduct() {
               </label>
 
             </div>
+
+            {/* New Arrival Toggle */}
+              <div className="flex items-center gap-3">
+
+                <input
+                  type="checkbox"
+                  name="newArrival"
+                  checked={formData.newArrival}
+                  onChange={handleChange}
+                  className="w-5 h-5"
+                />
+
+                <label className="text-sm font-medium">
+                  New Arrival
+                </label>
+
+              </div>
 
             {/* Submit */}
             <button

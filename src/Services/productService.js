@@ -25,3 +25,11 @@ export const fetchCategoryTree = async () => {
   const response = await axiosInstance.get(`${API_BASE}/categories/tree`);
   return response.data;
 };
+
+export const fetchPromotionProducts = async (promotionId) => {
+  const response = await axiosInstance.get(
+    `http://localhost:8080/api/admin/promotions/${promotionId}/products`
+  );
+
+  return response.data;
+};

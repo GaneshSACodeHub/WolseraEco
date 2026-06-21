@@ -37,6 +37,20 @@ function AdminSidebar() {
           Categories
         </Link>
 
+        <Link
+          to="/admin/promotions"
+          className="hover:bg-zinc-800 px-4 py-2 rounded-lg transition"
+        >
+          Promotions
+        </Link>
+
+        <Link
+          to="/admin/sliders"
+          className="hover:bg-zinc-800 px-4 py-2 rounded-lg transition"
+        >
+          Sliders
+        </Link>
+
         <button
           className="mt-10 bg-red-600 hover:bg-red-700 py-2 rounded-lg transition"
         >

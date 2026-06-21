@@ -7,6 +7,10 @@ import EditProduct from "./admin/products/EditProduct";
 import AdminCategories from "./admin/categories/AdminCategories";
 import AdminProtectedRoute from "./admin/AdminProtectedRoute";
 
+import SliderManagement from "./admin/sliders/SliderManagement";
+import PromotionManagement from "./admin/promotions/PromotionManagement";
+import PromotionProducts from "./pages/PromotionProducts";
+
 import AdminSignin from "./pages/AdminSignin";
 import ProductDetails from "./pages/ProductDetails";
 import Home from "./pages/Home";
@@ -36,6 +40,8 @@ function App() {
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/home" element={<Home />} />
       <Route path="/product/:id" element={<ProductDetails />} />
+      <Route path="/promotions/:id" element={<PromotionProducts />}
+/>
 
       <Route path="/cart" element={<Cart />} />
       <Route path="/checkout" element={<Checkout />} />
@@ -88,6 +94,24 @@ function App() {
         element={
           <AdminProtectedRoute>
             <AdminCategories />
+          </AdminProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/admin/promotions"
+        element={
+          <AdminProtectedRoute>
+            <PromotionManagement />
+          </AdminProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/admin/sliders"
+        element={
+          <AdminProtectedRoute>
+            <SliderManagement />
           </AdminProtectedRoute>
         }
       />

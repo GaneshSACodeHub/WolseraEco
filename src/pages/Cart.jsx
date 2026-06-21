@@ -2,12 +2,13 @@ import { useCart } from "../context/CartContext";
 import { Trash2, ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 function Cart() {
   const {
     cartItems,
     cartTotal,
-    removeFromCart,
+    removeItem,
     updateQuantity,
     clearCart,
     checkout
@@ -18,7 +19,9 @@ function Cart() {
   return (
     <div className="min-h-screen flex flex-col bg-zinc-950 text-white">
 
-      <main className="flex-grow px-10 py-16">
+      <Navbar />
+
+      <main className="flex-grow px-10 pt-32 pb-16">
 
         <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-12 pb-30">
 
@@ -79,7 +82,7 @@ function Cart() {
 
                         {/* REMOVE */}
                         <button
-                          onClick={() => removeFromCart(item.cartItemId)}
+                          onClick={() => removeItem(item.cartItemId)}
                           className="flex items-center gap-1 text-red-500 text-sm mt-3 hover:text-red-400"
                         >
                           <Trash2 size={16} />

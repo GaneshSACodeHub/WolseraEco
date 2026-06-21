@@ -30,7 +30,8 @@ const fetchProduct = async () => {
       description: product.description,
       gender: product.gender,
       colour: product.colour,
-      active: product.active
+      active: product.active,
+      newArrival: product.newArrival || false
     });
 
     setVariants(product.variants || []);
@@ -46,7 +47,8 @@ const fetchProduct = async () => {
     description: "",
     gender: "",
     colour: "",
-    active: true
+    active: true,
+    newArrival: false
   });
 
   // ================= VARIANT STATE =================
@@ -302,6 +304,19 @@ return (
             />
             <label className="text-sm font-medium">
               Active Product
+            </label>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <input
+              type="checkbox"
+              name="newArrival"
+              checked={formData.newArrival}
+              onChange={handleChange}
+              className="w-5 h-5"
+            />
+            <label className="text-sm font-medium">
+              New Arrival
             </label>
           </div>
 

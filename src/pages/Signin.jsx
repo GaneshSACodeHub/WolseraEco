@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { loginUser } from "../Services/authService";
+import { useCart } from "../context/CartContext";
 import signinImage from "../assets/signupImg5.png";
 import { motion } from "framer-motion";
 
 function Signin() {
   const navigate = useNavigate();
+  const { loadCart } = useCart();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -32,6 +34,10 @@ function Signin() {
       const token = response.data.token;
 
       localStorage.setItem("token", token);
+
+      // ✅ Professional fix:
+      // reload cart immediately after login
+      await loadCart();
 
       navigate("/loading", {
         state: {
@@ -181,7 +187,6 @@ function Signin() {
 
         <div className="absolute inset-0 bg-black/40"></div>
 
-        {/* Animated Content Only */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}

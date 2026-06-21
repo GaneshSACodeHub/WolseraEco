@@ -6,7 +6,6 @@ function Loading() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // receive message + redirect path
   const { message, redirect } = location.state || {};
 
   useEffect(() => {
@@ -18,9 +17,12 @@ function Loading() {
   }, [navigate, redirect]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black">
+    <div className="min-h-screen flex items-center justify-center bg-black relative overflow-hidden">
 
-      <div className="flex flex-col items-center text-center">
+      {/* Animated Purple Background Glow */}
+      <div className="absolute w-[500px] h-[500px] bg-[#9257c3]/20 rounded-full blur-3xl animate-pulseBg"></div>
+
+      <div className="relative z-10 flex flex-col items-center text-center">
 
         {/* Wolf Logo */}
         <img
@@ -30,13 +32,13 @@ function Loading() {
         />
 
         {/* Dynamic Text */}
-        <p className="text-white text-base tracking-wide mb-8">
+        <p className="text-white text-base tracking-[0.2em] uppercase mb-8">
           {message || "Loading..."}
         </p>
 
         {/* Loading Line */}
-        <div className="w-[250px] h-[2px] bg-gray-700 overflow-hidden rounded">
-          <div className="h-full bg-white animate-loadingBar"></div>
+        <div className="w-[250px] h-[3px] bg-gray-800 overflow-hidden rounded-full">
+          <div className="h-full bg-gradient-to-r from-[#9257c3] to-purple-400 animate-loadingBar"></div>
         </div>
 
       </div>

@@ -6,73 +6,168 @@ function ProductCard({ product, onAddToCart }) {
     window.open(`/product/${product.id}`, "_blank");
   };
 
-  const handleAddToCart = (e) => {
+  const handleViewProduct = (e) => {
     e.stopPropagation();
-    onAddToCart(product);
+    window.open(`/product/${product.id}`, "_blank");
   };
 
   return (
     <div
       onClick={handleCardClick}
-      className="bg-white rounded-xl shadow-md overflow-hidden 
-                 flex flex-col justify-between 
-                 h-[460px] 
+      className="bg-white rounded-2xl shadow-md overflow-hidden
+                 flex flex-col justify-between
+                 h-[500px]
                  cursor-pointer
-                 transition duration-300 
-                 hover:-translate-y-2 hover:shadow-xl"
+                 transition duration-300
+                 hover:-translate-y-2 hover:shadow-2xl
+                 hover:shadow-purple-500/10
+                 group"
     >
 
       {/* Image Section */}
-      <div className="overflow-hidden h-[260px]">
+      <div className="overflow-hidden h-[280px] relative">
+
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover 
-                     transition duration-300 hover:scale-105"
+          className="w-full h-full object-cover
+                     transition duration-500 group-hover:scale-110"
         />
+
+        {/* Category Badge */}
+        {product.category && (
+          <span
+            className="absolute top-3 left-3
+            text-[10px] uppercase tracking-wider
+            bg-white/90 backdrop-blur-sm
+            text-zinc-900 px-3 py-1 rounded-full font-medium shadow"
+          >
+            {product.category}
+          </span>
+        )}
+
+        {/* New Arrival Badge */}
+        {product.promotionType === "NEW_ARRIVAL" && (
+          <span
+            className="
+              absolute top-3 left-3
+              bg-emerald-500
+              text-white
+              text-[10px]
+              font-bold
+              px-3 py-1
+              rounded-full
+              shadow-lg
+              uppercase
+              tracking-wide
+            "
+          >
+            New Arrival
+          </span>
+        )}
+
+        {/* Discount Badge */}
+        {product.promotionType === "DISCOUNT" &&
+          product.discountPercentage && (
+            <span
+              className="
+                absolute top-3 left-3
+                bg-red-500
+                text-white
+                text-[10px]
+                font-bold
+                px-3 py-1
+                rounded-full
+                shadow-lg
+                uppercase
+                tracking-wide
+              "
+            >
+              {product.discountPercentage}% OFF
+            </span>
+        )}
+
       </div>
 
       {/* Content Section */}
       <div className="p-4 flex flex-col flex-grow">
 
-        {/* Category / Gender Tag */}
-        {product.category && (
-          <span className="inline-block text-[10px] uppercase tracking-wider 
-                           bg-zinc-100 text-zinc-800 px-2 py-1 rounded-full mb-2 w-fit">
-            {product.category}
+        {/* Rating */}
+        <div className="flex items-center gap-1 mb-2">
+
+          <span className="text-yellow-500 text-sm">
+            ★
           </span>
-        )}
+
+          <span className="text-sm font-semibold text-zinc-800">
+            {product.averageRating?.toFixed(1) || "0.0"}
+          </span>
+
+          <span className="text-xs text-gray-500">
+            ({product.totalRatings || 0})
+          </span>
+
+        </div>
 
         {/* Name */}
         <h3 className="text-base font-semibold text-zinc-900 mb-2 line-clamp-2">
           {product.name}
         </h3>
 
+        {/* Gender + Colour */}
+        <p className="text-sm text-gray-500 mb-4">
+          {product.gender || "Unisex"} • {product.colour || "Classic"}
+        </p>
+
         {/* Price */}
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-lg font-bold text-zinc-900">
+        <div className="flex items-center gap-2 mb-4 flex-wrap">
+
+          <span className="text-xl font-bold text-zinc-900">
             ₹{product.price}
           </span>
 
           {product.originalPrice && (
-            <span className="text-sm text-gray-500 line-through">
-              ₹{product.originalPrice}
-            </span>
+            <>
+              <span className="text-sm text-gray-500 line-through">
+                ₹{product.originalPrice}
+              </span>
+
+              {product.discountPercentage && (
+                <span
+                  className="
+                    bg-red-100
+                    text-red-600
+                    text-xs
+                    font-semibold
+                    px-2 py-1
+                    rounded-full
+                  "
+                >
+                  {product.discountPercentage}% OFF
+                </span>
+              )}
+            </>
           )}
+
         </div>
 
         <div className="flex-grow"></div>
 
-        {/* Add to Cart */}
-        <button
-          onClick={handleAddToCart}
-          className="w-full bg-zinc-900 text-white py-2.5 rounded-lg 
-                     hover:bg-zinc-800 transition duration-300"
-        >
-          Add to Cart
-        </button>
+        {/* View Product */}
+          <button
+            onClick={handleViewProduct}
+            className="w-full bg-[#9257c3]
+                      text-white py-3 rounded-xl font-medium
+                      hover:bg-[#7d46af]
+                      hover:shadow-lg hover:shadow-[#9257c3]/30
+                      active:scale-[0.98]
+                      transition duration-300"
+          >
+            View Product
+          </button>
 
       </div>
+
     </div>
   );
 }
